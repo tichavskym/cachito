@@ -2,16 +2,16 @@
 cached_package:
   # The upstream git repository
   seed_repo:
-    https_url: "https://github.com/release-engineering/retrodep.git"
+    https_url: "https://github.com/tichavskym/retrodep.git"
   # Repository that will be used for the test
   test_repo:
     # Use local bare remote repository
     # If this is used, the git urls below should be paths and should be available for the workers
-    use_local: True
+    use_local: False
     # The tracked repository (remote)
-    ssh_url: "./tmp/cachito-archives/integration-tests-git-repo.git"
+    ssh_url: "git@github.com:tichavskym/cachito_test_repo.git"
     # The URL of the repository
-    https_url: "./tmp/cachito-archives/integration-tests-git-repo.git"
+    https_url: "https://github.com/tichavskym/cachito_test_repo.git"
     # test repo user
     git_user: "Arthur Dent"
     # test repo user email
@@ -22,7 +22,7 @@ cached_package:
 pip_cached_deps:
   # Use local version of repos.
   # <use_local: True> is not supported in local environment and will be skipped.
-  use_local: True
+  use_local: False
   # test repo user
   git_user: "Arthur Dent"
   # test repo user email
@@ -30,8 +30,8 @@ pip_cached_deps:
   # HTTPS and SSH links to main and dependency repos respectively
   https_main_repo: https://github.com/cachito-testing/cachito-pip-with-deps.git
   https_dep_repo: https://github.com/cachito-testing/cachito-pip-without-deps.git
-  ssh_main_repo: "git@github.com:cachito-testing/cachito-pip-with-deps.git"
-  ssh_dep_repo: "git@github.com:cachito-testing/cachito-pip-without-deps.git"
+  ssh_main_repo: "git@github.com:tichavskym/cachito-pip-with-deps.git"
+  ssh_dep_repo: "git@github.com:tichavskym/cachito-pip-without-deps.git"
   # Base URL for downloading dependency archive
   dep_archive_baseurl: "https://github.com/cachito-testing/cachito-pip-without-deps/archive/"
   pkg_managers: [ "pip" ]
@@ -122,7 +122,7 @@ pip_cached_deps:
 gomod_cached_deps:
   # Use local version of repos.
   # <use_local: True> is not supported in local environment and will be skipped.
-  use_local: True
+  use_local: False
   # test repo user
   git_user: "Arthur Dent"
   # test repo user email
@@ -570,7 +570,7 @@ gomod_cached_deps:
 npm_cached_deps:
   # Use local version of repos.
   # <use_local: True> is not supported in local environment and will be skipped.
-  use_local: True
+  use_local: False
   # test repo user
   git_user: "Arthur Dent"
   # test repo user email
@@ -732,7 +732,7 @@ npm_cached_deps:
 yarn_cached_deps:
   # Use local version of repos.
   # <use_local: True> is not supported in local environment and will be skipped.
-  use_local: True
+  use_local: False
   # test repo user
   git_user: "Arthur Dent"
   # test repo user email
@@ -890,18 +890,16 @@ yarn_cached_deps:
 rubygems_cached_deps:
   # Use local version of repos.
   # <use_local: True> is not supported in local environment and will be skipped.
-  use_local: True
+  use_local: False
   # test repo user
   git_user: "Arthur Dent"
   # test repo user email
   git_email: "dent42@cachito.rocks"
   # HTTPS and SSH links to main and dependency repos respectively
-  https_main_repo: https://github.com/cachito-testing/cachito-rubygems-with-dependencies.git
-  https_dep_repo: https://github.com/cachito-testing/cachito-rubygems-without-deps.git
-  ssh_main_repo: "git@github.com:cachito-testing/cachito-rubygems-with-dependencies.git"
-  ssh_dep_repo: "git@github.com:cachito-testing/cachito-rubygems-without-deps.git"
-  # Base URL for downloading dependency archive
-  dep_archive_baseurl: "https://github.com/cachito-testing/cachito-rubygems-without-deps/archive/"
+  https_main_repo: https://github.com/tichavskym/cachito-rubygems-with-dependencies.git
+  https_dep_repo: https://github.com/tichavskym/cachito-rubygems-without-deps.git
+  ssh_main_repo: "git@github.com:tichavskym/cachito-rubygems-with-dependencies.git"
+  ssh_dep_repo: "git@github.com:tichavskym/cachito-rubygems-without-deps.git"
   pkg_managers: [ "rubygems" ]
   expected_files:
     app: https://github.com/cachito-testing/cachito-rubygems-with-dependencies/tarball/MAIN_REPO_COMMIT
@@ -913,7 +911,7 @@ rubygems_cached_deps:
       - name: my-package
         replaces: null
         type: rubygems
-        version: git+https://github.com/cachito-testing/cachito-rubygems-without-deps.git@FIRST_DEP_COMMIT
+        version: git+https://github.com/tichavskym/cachito-rubygems-without-deps.git@FIRST_DEP_COMMIT
       - name: pathgem
         replaces: null
         type: rubygems
@@ -931,7 +929,7 @@ rubygems_cached_deps:
         - name: my-package
           replaces: null
           type: rubygems
-          version: git+https://github.com/cachito-testing/cachito-rubygems-without-deps.git@FIRST_DEP_COMMIT
+          version: git+https://github.com/tichavskym/cachito-rubygems-without-deps.git@FIRST_DEP_COMMIT
         - name: pathgem
           replaces: null
           type: rubygems
@@ -948,14 +946,14 @@ rubygems_cached_deps:
         type: rubygems
         version: MAIN_REPO_COMMIT
   content_manifest:
-    purl: "pkg:github/cachito-testing/cachito-rubygems-with-dependencies@MAIN_REPO_COMMIT"
+    purl: "pkg:github/tichavskym/cachito-rubygems-with-dependencies@MAIN_REPO_COMMIT"
     dep_purls:
       - "pkg:gem/zeitwerk@2.6.0"
-      - "pkg:github/cachito-testing/cachito-rubygems-with-dependencies@MAIN_REPO_COMMIT#vendor/pathgem"
-      - "pkg:github/cachito-testing/cachito-rubygems-without-deps@FIRST_DEP_COMMIT"
       - "pkg:github/radpad/swagger-ui_rails@7234e21e621b628d6b43194f9ba5cce5ca587f16"
+      - "pkg:github/tichavskym/cachito-rubygems-with-dependencies@MAIN_REPO_COMMIT#vendor/pathgem"
+      - "pkg:github/tichavskym/cachito-rubygems-without-deps@FIRST_DEP_COMMIT"
     source_purls:
       - "pkg:gem/zeitwerk@2.6.0"
-      - "pkg:github/cachito-testing/cachito-rubygems-with-dependencies@MAIN_REPO_COMMIT#vendor/pathgem"
-      - "pkg:github/cachito-testing/cachito-rubygems-without-deps@FIRST_DEP_COMMIT"
       - "pkg:github/radpad/swagger-ui_rails@7234e21e621b628d6b43194f9ba5cce5ca587f16"
+      - "pkg:github/tichavskym/cachito-rubygems-with-dependencies@MAIN_REPO_COMMIT#vendor/pathgem"
+      - "pkg:github/tichavskym/cachito-rubygems-without-deps@FIRST_DEP_COMMIT"
